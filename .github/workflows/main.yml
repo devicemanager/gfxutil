@@ -22,11 +22,11 @@ jobs:
           path: gfxutil
       - uses: actions/checkout@v3
         with:
-          repository: acidanthera/audk
+          repository: devicemanager/audk
           path: edk2
       - name: CI Bootstrap
         run: |
-          cd gfxutil; src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/ocbuild/master/ci-bootstrap.sh) && eval "$src" || exit 1
+          cd gfxutil; src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/devicemanager/ocbuild/master/ci-bootstrap.sh) && eval "$src" || exit 1
 
       - run: cd gfxutil; xcodebuild -project gfxutil.xcodeproj -jobs 1 -configuration Debug
       - run: cd gfxutil; xcodebuild -project gfxutil.xcodeproj -jobs 1 -configuration Release
@@ -57,11 +57,11 @@ jobs:
 #           path: gfxutil
 #       - uses: actions/checkout@v3
 #         with:
-#           repository: acidanthera/audk
+#           repository: devicemanager/audk
 #           path: edk2
 #       - name: CI Bootstrap
 #         run: |
-#           cd gfxutil; src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/ocbuild/master/ci-bootstrap.sh) && eval "$src" || exit 1
+#           cd gfxutil; src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/devicemanager/ocbuild/master/ci-bootstrap.sh) && eval "$src" || exit 1
 # 
 #       - run: cd gfxutil; xcodebuild -project gfxutil.xcodeproj analyze -quiet -scheme gfxutil -configuration Debug CLANG_ANALYZER_OUTPUT=plist-html CLANG_ANALYZER_OUTPUT_DIR="$(pwd)/clang-analyze" && [ "$(find clang-analyze -name "*.html")" = "" ]
 #       - run: cd gfxutil; xcodebuild -project gfxutil.xcodeproj analyze -quiet -scheme gfxutil -configuration Release CLANG_ANALYZER_OUTPUT=plist-html CLANG_ANALYZER_OUTPUT_DIR="$(pwd)/clang-analyze" && [ "$(find clang-analyze -name "*.html")" = "" ]
@@ -71,22 +71,22 @@ jobs:
 #     runs-on: macos-latest
 #     env:
 #       JOB_TYPE: COVERITY
-#     if: github.repository_owner == 'acidanthera' && github.event_name != 'pull_request'
+#     if: github.repository_owner == 'devicemanager' && github.event_name != 'pull_request'
 #     steps:
 #       - uses: actions/checkout@v3
 #         with:
 #           path: gfxutil
 #       - uses: actions/checkout@v3
 #         with:
-#           repository: acidanthera/audk
+#           repository: devicemanager/audk
 #           path: edk2
 #       - name: CI Bootstrap
 #         run: |
-#           cd gfxutil; src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/ocbuild/master/ci-bootstrap.sh) && eval "$src" || exit 1
+#           cd gfxutil; src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/devicemanager/ocbuild/master/ci-bootstrap.sh) && eval "$src" || exit 1
 # 
 #       - name: Run Coverity
 #         run: |
-#           cd gfxutil; src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/ocbuild/master/coverity/covstrap.sh) && eval "$src" || exit 1
+#           cd gfxutil; src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/devicemanager/ocbuild/master/coverity/covstrap.sh) && eval "$src" || exit 1
 #         env:
 #           COVERITY_SCAN_TOKEN: ${{ secrets.COVERITY_SCAN_TOKEN }}
 #           COVERITY_SCAN_EMAIL: ${{ secrets.COVERITY_SCAN_EMAIL }}
